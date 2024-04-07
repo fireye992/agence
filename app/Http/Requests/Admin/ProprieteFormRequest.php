@@ -23,18 +23,17 @@ class ProprieteFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min 6'],
-            'description' => ['required', 'min 8'],
-            'surface' => ['required', 'integer', 'min:9'],
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:6'],
+            'surface' => ['required', 'integer', 'min:0'],
             'pieces' => ['required', 'integer', 'min:1'],
             'chambres' => ['required', 'integer', 'min:0'],
             'etage' => ['required', 'integer', 'min:0'],
             'prix' => ['required', 'numeric'],
-            'ville' => ['required', 'min:8'],
-            'code_postal' => ['required', 'min:8'],
+            'ville' => ['required', 'min:3'],
+            'code_postal' => ['required', 'min:3'],
             'vendu' => ['required', 'boolean'],
-
-            'adresse' =>['required', 'min 8'],
+            'adresse' =>['required', 'min:5'],
         ];
     }
 }

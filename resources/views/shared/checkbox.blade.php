@@ -11,5 +11,4 @@
             {{ $message }}
         </div>
 @enderror
-
 </div>

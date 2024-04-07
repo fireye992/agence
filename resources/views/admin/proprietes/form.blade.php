@@ -56,7 +56,7 @@
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Etage',
-                'name' => 'chambres',
+                'name' => 'etage',
                 'value' => $propriete->etage,
             ])
         </div>

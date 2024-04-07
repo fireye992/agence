@@ -14,7 +14,7 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        return view('admin.proprietes.index',[
+        return view('admin.proprietes.index', [
             'proprietes' => Propriete::orderBy('created_at', 'desc')->paginate(25)
         ]);
     }
@@ -25,8 +25,21 @@ class ProprieteController extends Controller
     public function create()
     {
         $propriete = new Propriete();
+        $propriete->fill([
+
+            'title' => 'gogo',
+            'description' =>  'tamerelap',
+            'surface' => 40,
+            'pieces' => 4,
+            'chambres' => 3,
+            'etage' => 1,
+            'prix' => 11111,
+            'adresse' => 'dans ton cul',
+            'ville' => 'Strasbourg',
+            'code_postal' => '67000',
+        ]);
         return view('admin.proprietes.form', [
-            'propriete' => new Propriete()
+            'propriete' => $propriete
         ]);
     }
 
@@ -36,7 +49,7 @@ class ProprieteController extends Controller
     public function store(ProprieteFormRequest $request)
     {
         $propriete = Propriete::create($request->validated());
-        return to_route('admin.propriete.index')->with('success', 'C\'est créer');
+        return to_route('admin.propriete.index')->with('success', 'C\'est créé');
     }
 
     /**

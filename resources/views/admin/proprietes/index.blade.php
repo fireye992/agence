@@ -8,6 +8,11 @@
         <a href="{{ route('admin.propriete.create') }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600">
             Ajouter un bien</a>
     </div>
+    @if (session('success'))
+    <div class="bg-green-500 text-white p-3 rounded">
+        {{ session('success') }}
+    </div>
+@endif
 
     <table class="w-full max-w-full mb-4 bg-transparent">
         <thead>
@@ -25,7 +30,7 @@
                     <td>{{ $propriete->title }}</td>
                     <td>{{ $propriete->surface }}m²</td>
                     <td>{{ number_format($propriete->prix, thousands_separator: ' ') }}</td>
-
+                    <td>{{ $propriete->ville }}</td>
                 </tr>
             @endforeach
         </tbody>
