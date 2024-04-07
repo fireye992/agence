@@ -33,6 +33,8 @@ class ProprieteFormRequest extends FormRequest
             'ville' => ['required', 'min:8'],
             'code_postal' => ['required', 'min:8'],
             'vendu' => ['required', 'boolean'],
+
+            'adresse' =>['required', 'min 8'],
         ];
     }
 }

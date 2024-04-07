@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Propriete;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\ProprieteFormRequest;
 
 class ProprieteController extends Controller
 {
@@ -23,15 +24,19 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        //
+        $propriete = new Propriete();
+        return view('admin.proprietes.form', [
+            'propriete' => new Propriete()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProprieteFormRequest $request)
     {
-        //
+        $propriete = Propriete::create($request->validated());
+        return to_route('admin.propriete.index')->with('success', 'C\'est créer');
     }
 
     /**
