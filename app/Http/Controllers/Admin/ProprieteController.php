@@ -15,7 +15,7 @@ class ProprieteController extends Controller
     public function index()
     {
         return view('admin.proprietes.index', [
-            'proprietes' => Propriete::orderBy('created_at', 'desc')->paginate(25)
+            'proprietes' => Propriete::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 

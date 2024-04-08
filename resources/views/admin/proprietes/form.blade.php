@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <h1 class="text-3xl">@yield('title')</h1>
+    <h1 class="text-3xl text-gray-100">@yield('title')</h1>
 
-    <form class="flex flex-col gap-2"
+    <form class="flex flex-col gap-2 text-gray-100"
         action="{{ route($propriete->exists ? 'admin.propriete.update' : 'admin.propriete.store', $propriete) }}"
         method="post">
 
@@ -14,14 +14,14 @@
 
         @method($propriete->exists ? 'put' : 'post')
 
-        <div class="flex flex-wrap">
+        <div class="flex">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Titre',
                 'name' => 'title',
                 'value' => $propriete->title,
             ])
-            <div class="relative flex-grow max-w-full flex-1 px-4 flex flex-wrap ">
+            <div class="flex">
                 @include('shared.input', [
                     'class' => 'flex',
                     'name' => 'surface',
@@ -82,8 +82,7 @@
         </div>
         @include('shared.checkbox', ['name' => 'vendu', 'label' => 'Vendu', 'value' => $propriete->vendu])
         <div>
-            <button
-                class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600">
+            <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 @if ($propriete->exists)
                     Modifier
                 @else

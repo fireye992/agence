@@ -7,8 +7,8 @@
         @error($name) is-invalid @enderror" role="switch" id="{{ $name }}">
     <label class="form-check-label" for="{{ $name }}">{{ $label }}</label>
     @error($name)
-    <div class="text-red-500 text-sm italic">
+        <div class="text-red-500 text-sm italic">
             {{ $message }}
         </div>
-@enderror
+    @enderror
 </div>
