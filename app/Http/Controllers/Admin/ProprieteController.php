@@ -63,24 +63,28 @@ class ProprieteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Propriete $propriete)
     {
-        //
+        return view('admin.proprietes.form', [
+            'propriete' => $propriete
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProprieteFormRequest $request, Propriete $propriete)
     {
-        //
+        $propriete->update($request->validated());
+        return to_route('admin.propriete.index')->with('success', 'C\'est modifié');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Propriete $propriete)
     {
-        //
+        $propriete->delete();
+        return to_route('admin.propriete.index')->with('success', 'C\'est supprimé');
     }
 }
