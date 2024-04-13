@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Propriete;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ProprieteFormRequest;
+use App\Models\Option;
 
 class ProprieteController extends Controller
 {
@@ -39,7 +40,8 @@ class ProprieteController extends Controller
             'code_postal' => '67000',
         ]);
         return view('admin.proprietes.form', [
-            'propriete' => $propriete
+            'propriete' => $propriete,
+            'options' => Option::pluck('name', 'id'),
         ]);
     }
 
@@ -49,6 +51,7 @@ class ProprieteController extends Controller
     public function store(ProprieteFormRequest $request)
     {
         $propriete = Propriete::create($request->validated());
+        $propriete->options()->sync($request->validated('options'));
         return to_route('admin.propriete.index')->with('success', 'C\'est créé');
     }
 
@@ -66,7 +69,8 @@ class ProprieteController extends Controller
     public function edit(Propriete $propriete)
     {
         return view('admin.proprietes.form', [
-            'propriete' => $propriete
+            'propriete' => $propriete,
+            'options' => Option::pluck('name', 'id'),
         ]);
     }
 
@@ -76,6 +80,7 @@ class ProprieteController extends Controller
     public function update(ProprieteFormRequest $request, Propriete $propriete)
     {
         $propriete->update($request->validated());
+        $propriete->options()->sync($request->validated('options'));
         return to_route('admin.propriete.index')->with('success', 'C\'est modifié');
     }
 

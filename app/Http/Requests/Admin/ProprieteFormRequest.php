@@ -31,9 +31,10 @@ class ProprieteFormRequest extends FormRequest
             'etage' => ['required', 'integer', 'min:0'],
             'prix' => ['required', 'numeric'],
             'ville' => ['required', 'min:3'],
+            'adresse' =>['required', 'min:5'],
             'code_postal' => ['required', 'min:3'],
             'vendu' => ['required', 'boolean'],
-            'adresse' =>['required', 'min:5'],
+            'options' => ['array', 'exists:options,id', 'required']
         ];
     }
 }

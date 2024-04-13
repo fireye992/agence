@@ -3,8 +3,9 @@
 @section('title', 'Toutes les options')
 
 @section('content')
-    <div class='flex'>
-        <h1 class="flex-1 font-bold text-purple-600 text-5xl ">@yield('title')</h1>
+
+    <div class='flex justify-between items-center'>
+        <h1 class="font-bold text-purple-600 text-5xl ">@yield('title')</h1>
         <a href="{{ route('admin.option.create') }}" type="button"
             class="flex justify-end text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             Ajouter une option</a>
