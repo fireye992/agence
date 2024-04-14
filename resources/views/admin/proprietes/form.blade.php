@@ -6,7 +6,7 @@
 
     <h1 class="text-3xl text-gray-100">@yield('title')</h1>
 
-    <form class="flex flex-col gap-2 text-gray-100"
+    <form class="max-w-md mx-auto"
         action="{{ route($propriete->exists ? 'admin.propriete.update' : 'admin.propriete.store', $propriete) }}"
         method="post">
 
@@ -14,14 +14,14 @@
 
         @method($propriete->exists ? 'put' : 'post')
 
-        <div class="w-full md:w-1/2">
+        <div class="relative z-0 w-full mb-5 group">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Titre',
                 'name' => 'title',
                 'value' => $propriete->title,
             ])
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid md:grid-cols-2 md:gap-6">
                 @include('shared.input', [
                     'class' => 'flex',
                     'name' => 'surface',
@@ -40,7 +40,7 @@
             'name' => 'description',
             'value' => $propriete->description,
         ])
-        <div class="w-full md:w-1/2">
+        <div class="relative z-0 w-full mb-5 group">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Pieces',
@@ -60,7 +60,7 @@
                 'value' => $propriete->etage,
             ])
         </div>
-        <div class="w-full md:w-1/2">
+        <div class="relative z-0 w-full mb-5 group">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Adresse',
@@ -103,3 +103,4 @@
             </button>
         </div>
     </form>
+    @endsection

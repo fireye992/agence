@@ -6,7 +6,7 @@
 
     <h1 class="text-3xl text-gray-100">@yield('title')</h1>
 
-    <form class="flex flex-col gap-2 text-gray-100"
+    <form class="max-w-md mx-auto"
         action="{{ route($option->exists ? 'admin.option.update' : 'admin.option.store', $option) }}"
         method="post">
 
@@ -26,3 +26,4 @@
             </button>
         </div>
     </form>
+    @endsection

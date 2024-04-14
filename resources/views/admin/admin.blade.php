@@ -51,14 +51,20 @@
                 </a>
 
 
-                <a href="{{ route('admin.option.index') }}"
+                <a href="{{ route('admin.option.create')  }}"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
                     @class([
                         'nav-link',
                         'font-bold text-white bg-gray-700' => str_contains($route, 'option.'),
                     ])>
-                    Options
+                    Creer Options
                 </a>
+
+                <a href="{{ route('admin.option.index') }}"
+                class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 
+                {{ str_contains($route, 'option.') ? 'font-bold text-white bg-gray-700' : '' }}">
+                Options
+            </a>
 
                 <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                     Contacts

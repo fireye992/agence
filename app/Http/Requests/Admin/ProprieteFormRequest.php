@@ -34,7 +34,7 @@ class ProprieteFormRequest extends FormRequest
             'adresse' =>['required', 'min:5'],
             'code_postal' => ['required', 'min:3'],
             'vendu' => ['required', 'boolean'],
-            'options' => ['array', 'exists:options,id', 'required']
+            'options' => ['array', 'exists:options,id']
         ];
     }
 }
