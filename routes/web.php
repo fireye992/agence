@@ -2,11 +2,10 @@
 
 use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\ProprieteController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->group(function  () {
     Route::resource('propriete', ProprieteController::class)->except(['show']); 

@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
-    <title>@yield('title') | Administration</title>
+    <title>@yield('title') | Agence Momoboliere</title>
 </head>
 
 <body class="dark:bg-gray-800 antialiased">
@@ -36,6 +35,13 @@
                 <a href="/"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Home
+                </a>
+                <a href="{{ route('admin.propriete.index') }}"
+                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
+                    @class([
+                        'font-bold text-white bg-gray-700' => str_contains($route, 'biens.'),
+                    ])>
+                    Biens
                 </a>
                 <a href="{{ route('admin.propriete.index') }}"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
@@ -73,24 +79,9 @@
         </div>
     </nav>
 
-    <div class='container '>
-        @if (session('success'))
-            <div class="bg-green-500 text-white p-3 rounded">
-                {{ session('success') }}
-            </div>
-        @endif
 
-        @if ($errors->any())
-            <div class="bg-red-500 text-white p-3 rounded">
-                <ul class="my-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         @yield('content')
-    </div>
+  
 
     <script>
         document.getElementById('nav-toggle').onclick = function() {
@@ -98,15 +89,6 @@
         }
     </script>
 
-    <script>
-        new TomSelect('select[multiple]', {
-            plugins: {
-                remove_button: {
-                    title: 'Supprimer'
-                }
-            }
-        })
-    </script>
 </body>
 
 </html>
