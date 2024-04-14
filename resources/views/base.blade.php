@@ -16,7 +16,7 @@
 
     <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
-            <span class="font-semibold text-xl tracking-tight">Admin Dashboard</span>
+            <span class="font-semibold text-xl tracking-tight">Client Dashboard</span>
         </div>
         <div class="block lg:hidden">
             <button id="nav-toggle"
@@ -36,10 +36,10 @@
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Home
                 </a>
-                <a href="{{ route('admin.propriete.index') }}"
+                <a href="{{ route('propriete.index') }}"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
                     @class([
-                        'font-bold text-white bg-gray-700' => str_contains($route, 'biens.'),
+                        'font-bold text-white bg-gray-700' => str_contains($route, 'propriete.'),
                     ])>
                     Biens
                 </a>
