@@ -4,8 +4,15 @@
 
 @section('content')
 
-
-
+<div class="bg-gray-700 p-5 mb-5 text-center">
+    <form action="" method="get" class="flex justify-center gap-2">
+        <!-- Éléments du formulaire comme les champs de saisie et les boutons -->
+        <input type="number" placeholder="Budget Max" class="text-sm p-2 rounded leading-loose" name="prix" value="">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Chercher
+        </button>
+    </form>
+</div>
 
     <div class="container mx-auto sm:px-4 text-slate-100">
         <div class="flex flex-wrap ">
