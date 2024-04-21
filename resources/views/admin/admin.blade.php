@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <title>@yield('title') | Administration</title>
 </head>
@@ -33,8 +35,7 @@
         @endphp
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-content">
             <div class="text-sm lg:flex-grow">
-                <a href="/"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Home
                 </a>
                 <a href="{{ route('admin.propriete.index') }}"
@@ -51,7 +52,7 @@
                 </a>
 
 
-                <a href="{{ route('admin.option.create')  }}"
+                <a href="{{ route('admin.option.create') }}"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
                     @class([
                         'nav-link',
@@ -61,10 +62,10 @@
                 </a>
 
                 <a href="{{ route('admin.option.index') }}"
-                class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 
+                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 
                 {{ str_contains($route, 'option.') ? 'font-bold text-white bg-gray-700' : '' }}">
-                Options
-            </a>
+                    Options
+                </a>
 
                 <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                     Contacts
@@ -73,23 +74,12 @@
         </div>
     </nav>
 
-    <div class='container '>
-        @if (session('success'))
-            <div class="bg-green-500 text-white p-3 rounded">
-                {{ session('success') }}
-            </div>
-        @endif
+    <div class='container p-2'>
 
-        @if ($errors->any())
-            <div class="bg-red-500 text-white p-3 rounded">
-                <ul class="my-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('shared.flash')
+
         @yield('content')
+
     </div>
 
     <script>

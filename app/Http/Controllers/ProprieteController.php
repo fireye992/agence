@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProprieteContactRequest;
 use App\Http\Requests\SearchProprietesRequest;
+use App\Mail\ProprieteContactMail;
 use App\Models\Propriete;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ProprieteController extends Controller
 {
@@ -39,5 +42,12 @@ class ProprieteController extends Controller
         return view('propriete.show', [
             'propriete' => $propriete
         ]);
+    }
+
+    public function contact(Propriete $propriete, ProprieteContactRequest $request)
+    {
+        Mail::send(new ProprieteContactMail($propriete, $request->validated()));
+        return back()->with('success', 'Votre demande de prise de contact à été enregistrée');
+        // return redirect()->route('propriete.index')->with('success', 'Votre demande de prise de contact a été enregistrée');
     }
 }
