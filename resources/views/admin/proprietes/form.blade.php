@@ -87,6 +87,7 @@
             'multiple' => true,
         ])
         @include('shared.checkbox', [
+            'class' => 'text-slate-200',
             'name' => 'vendu',
             'label' => 'Vendu',
             'value' => $propriete->vendu,

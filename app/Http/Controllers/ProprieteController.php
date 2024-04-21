@@ -10,7 +10,7 @@ class ProprieteController extends Controller
 {
     public function index(SearchProprietesRequest $request)
     {
-        $query = Propriete::query();
+        $query = Propriete::query()->orderBy('created_at', 'desc');
         if ($prix = $request->validated('prix')) {
             $query = $query->where('prix','<=', $prix);
         }  

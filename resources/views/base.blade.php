@@ -12,7 +12,7 @@
     <title>@yield('title') | Agence Momoboliere</title>
 </head>
 
-<body class="dark:bg-gray-800 antialiased">
+<body class="dark:bg-slate-800 antialiased">
 
     <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -30,7 +30,7 @@
         @php
             $route = request()->route()->getName();
         @endphp
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-content">
+        <div class="hidden w-full flex-grow lg:flex lg:items-center lg:w-auto" id="nav-content">
             <div class="text-sm lg:flex-grow">
                 <a href="/"
                     class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
