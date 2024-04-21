@@ -28,14 +28,14 @@ class ProprieteController extends Controller
         $propriete = new Propriete();
         $propriete->fill([
 
-            'title' => 'gogo',
-            'description' =>  'tamerelap',
-            'surface' => 40,
-            'pieces' => 4,
-            'chambres' => 3,
-            'etage' => 1,
-            'prix' => 11111,
-            'adresse' => 'dans ton cul',
+            'title' => 'Titre',
+            'description' =>  'Description',
+            'surface' => 45,
+            'pieces' => 2,
+            'chambres' => 1,
+            'etage' => 0,
+            'prix' => 200000,
+            'adresse' => 'Adresse',
             'ville' => 'Strasbourg',
             'code_postal' => '67000',
         ]);
