@@ -13,7 +13,8 @@
 
 
     <title>@yield('title') | Administration</title>
-</head>
+ 
+</head> 
 
 <body class="dark:bg-gray-800 antialiased">
 
@@ -30,47 +31,37 @@
                 </svg>
             </button>
         </div>
-        @php
-            $route = request()->route()->getName();
-        @endphp
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-content">
+        <div class="hidden w-full flex-grow lg:flex lg:items-center lg:w-auto"> <!-- le hidden est important pour le reactive -->
             <div class="text-sm lg:flex-grow">
                 <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Home
                 </a>
-                <a href="{{ route('admin.propriete.index') }}"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
-                    @class([
-                        'font-bold text-white bg-gray-700' => str_contains($route, 'propriete.'),
-                    ])>
+                <a href="{{ route('admin.propriete.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Properties
                 </a>
-                <a href="{{ route('admin.propriete.index') }}"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 
-                    {{ str_contains($route, 'propriete.') ? 'font-bold text-white bg-gray-700' : '' }}">
-                    Properties
-                </a>
-
-
-                <a href="{{ route('admin.option.create') }}"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
-                    @class([
-                        'nav-link',
-                        'font-bold text-white bg-gray-700' => str_contains($route, 'option.'),
-                    ])>
+                <a href="{{ route('admin.option.create') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Creer Options
                 </a>
-
-                <a href="{{ route('admin.option.index') }}"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4 
-                {{ str_contains($route, 'option.') ? 'font-bold text-white bg-gray-700' : '' }}">
+                <a href="{{ route('admin.option.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                     Options
                 </a>
-
                 <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                     Contacts
                 </a>
             </div>
+            @auth
+            <div class="lg:flex lg:items-center lg:justify-end lg:flex-grow">
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    Déconnexion
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    @method('delete')
+                </form>
+            </div>
+            @endauth
         </div>
     </nav>
 
