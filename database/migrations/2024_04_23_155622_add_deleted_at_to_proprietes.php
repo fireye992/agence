@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('proprietes', function (Blueprint $table) {
             $table->dateTime('deleted_at')->nullable();
+            // $table->softDeletes();       //c'est mieux
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('proprietes', function (Blueprint $table) {
             $table->dropColumn('deleted_at');
+            // $table->dropSoftDeletes();  //c'est mieux 2
         });
     }
 };

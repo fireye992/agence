@@ -59,7 +59,7 @@ class Propriete extends Model
             if ($file->getError()) {
                 continue;
             }
-            $filname =$file->store('properties/' .$this->id, 'public');
+            $filname =$file->store('proprietes/' . $this->id, 'public');
             $pictures[] = [
                 'filename' => $filename
             ];
