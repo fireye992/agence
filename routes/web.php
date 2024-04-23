@@ -32,4 +32,6 @@ Route::delete('/logout', [AuthController::class, 'logout'])
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('propriete', ProprieteController::class)->except(['show']);
     Route::resource('option', OptionController::class)->except(['show']);
+
+    Route::post('propriete/{id}/restore', [ProprieteController::class, 'restore'])->name('propriete.restore')->where('id', '[0-9]+');
 });

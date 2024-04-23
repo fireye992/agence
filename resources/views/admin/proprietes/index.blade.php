@@ -23,25 +23,35 @@
         <tbody>
             @foreach ($proprietes as $propriete)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td class="px-6 py-4">{{ $propriete->title }}</>
-                    <td class="px-6 py-4">{{ $propriete->surface }}m²</td>
-                    <td class="px-6 py-4">{{ number_format($propriete->prix, thousands_separator: ' ') }}</td>
+                    <td class="px-6 py-4">{{ $propriete->title }}</td>
+                    <td class="px-6 py-4">{{ $propriete->surface }} m²</td>
+                    <td class="px-6 py-4">{{ number_format($propriete->prix, thousands_separator: ' ') }}€</td>
                     <td class="px-6 py-4">{{ $propriete->ville }}</td>
                     <td class="px-6 py-4">
                         <div class="flex gap-2 w-full justify-end">
-                            <a href="{{ route('admin.propriete.edit', $propriete) }}" type="button"
-                                class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Editer</a>
-                            <form action="{{ route('admin.propriete.destroy', $propriete) }}" class="action" method="post">
+                            @if ($propriete->trashed())
+                                <form action="{{ route('admin.propriete.restore', $propriete->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Restaurer</button>
+                                </form>
+                            @else
+                                <a href="{{ route('admin.propriete.edit', $propriete) }}"
+                                    class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Editer</a>
+                            @endif
+                            <form action="{{ route('admin.propriete.destroy', $propriete) }}" method="POST">
                                 @csrf
-                                @method('delete')
+                                @method('DELETE')
                                 <button type="submit"
-                                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Supprimer</button>
+                                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">{{ $propriete->trashed() ? 'Force Delete' : 'Supprimer' }}</button>
                             </form>
                         </div>
                     </td>
                 </tr>
             @endforeach
+
         </tbody>
+
     </table>
 
     {{ $proprietes->links() }}

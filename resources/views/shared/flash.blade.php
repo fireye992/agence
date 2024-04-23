@@ -6,7 +6,7 @@
     $(document).ready(function() {
         setTimeout(function() {
             $('#successMessage').fadeOut('slow');
-        }, 4000); // 5000 ms = 5 s
+        }, 4000); // 4000 ms = '' s
     });
 </script>
 @endif
