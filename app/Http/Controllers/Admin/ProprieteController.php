@@ -56,7 +56,7 @@ class ProprieteController extends Controller
     {
         $propriete = Propriete::create($request->validated());
         $propriete->options()->sync($request->validated('options'));
-        $propriete->attachFiles($request->validated('pictures'));
+        $propriete->attachedFiles($request->validated('pictures'));
         return to_route('admin.propriete.index')->with('success', 'C\'est créé');
     }
 
