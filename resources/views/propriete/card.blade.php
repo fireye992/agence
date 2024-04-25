@@ -3,6 +3,12 @@
         <h5 class="mb-3 text-slate-800">
             <a href="{{ route('propriete.show', ['slug' =>$propriete->getSlug(), 'propriete' => $propriete]) }}">{{ $propriete->title }}</a>
         </h5>
+        <div class="image">
+            @foreach($propriete->pictures as $picture)
+    <img src="{{ Storage::url($picture->filename) }}" alt="Image de la propriété">
+@endforeach
+
+        </div>
         <p class="mb-0 text-slate-800">{{ $propriete->surface }} m² - {{ $propriete->code_postal }} {{ $propriete->ville }}</p>
         <div class="text-blue-600"> {{ number_format($propriete->prix, thousands_separator: '') }} €
         </div>

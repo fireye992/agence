@@ -52,11 +52,27 @@ class ProprieteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(ProprieteFormRequest $request)
+    // {
+    //     $propriete = Propriete::create($request->validated());
+    //     $propriete->options()->sync($request->validated('options'));
+    //     $propriete->attachedFiles($request->validated('pictures'));
+
     public function store(ProprieteFormRequest $request)
     {
         $propriete = Propriete::create($request->validated());
         $propriete->options()->sync($request->validated('options'));
-        $propriete->attachedFiles($request->validated('pictures'));
+    
+        // Vérifier si des fichiers ont été uploadés
+        if ($request->hasFile('pictures')) {
+            // Récupérer les fichiers sous forme de tableau
+            $files = $request->file('pictures');
+            // S'assurer que $files n'est pas nul et est un tableau
+            if (is_array($files)) {
+                $propriete->attachedFiles($files);
+            }
+        }
+
         return to_route('admin.propriete.index')->with('success', 'C\'est créé');
     }
 
@@ -99,7 +115,20 @@ class ProprieteController extends Controller
     //     return to_route('admin.propriete.index')->with('success', 'C\'est modifié');
     // }
 
-    public function update(ProprieteFormRequest $request, Propriete $propriete)
+//     public function update(ProprieteFormRequest $request, Propriete $propriete)
+// {
+//     if ($request->has('restore')) {
+//         $propriete->restore();
+//         return redirect()->route('admin.propriete.index')->with('success', 'Propriété restaurée avec succès.');
+//     }
+
+//     $propriete->update($request->validated());
+//     $propriete->options()->sync($request->validated('options'));
+//     $propriete->attachedFiles($request->validated('pictures'));
+//     return redirect()->route('admin.propriete.index')->with('success', 'Propriété mise à jour avec succès.');
+// }
+
+public function update(ProprieteFormRequest $request, Propriete $propriete)
 {
     if ($request->has('restore')) {
         $propriete->restore();
@@ -108,7 +137,14 @@ class ProprieteController extends Controller
 
     $propriete->update($request->validated());
     $propriete->options()->sync($request->validated('options'));
-    $propriete->attachedFiles($request->validated('pictures'));
+
+    if ($request->hasFile('pictures')) {
+        $files = $request->file('pictures');
+        if (is_array($files)) {
+            $propriete->attachedFiles($files);
+        }
+    }
+
     return redirect()->route('admin.propriete.index')->with('success', 'Propriété mise à jour avec succès.');
 }
 

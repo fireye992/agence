@@ -46,6 +46,18 @@ class Propriete extends Model
         return $this->hasMany(Picture::class);
     }
 
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
+    public function attachFiles($pictures)
+    {
+        foreach ($pictures as $picture) {
+            $this->files()->create(['path' => $picture->store('images', 'public')]);
+        }
+    }
+
     //***** */
 
 
