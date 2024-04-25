@@ -95,6 +95,12 @@
         ])
         <div>
             <div>
+                @foreach ($propriete->pictures as $picture)
+    <div>
+        <img src="{{ Storage::url($picture->filename) }}" alt="Image" style="width: 100px; height: auto;">
+        <input type="checkbox" name="delete_pictures[]" value="{{ $picture->id }}"> Supprimer
+    </div>
+@endforeach
                 <input type="file" name="pictures[]" multiple>
             </div>
             <button type="submit"
