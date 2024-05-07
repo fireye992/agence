@@ -66,6 +66,7 @@
                 </div>
             </form>
         </div>
+        @include('shared.contact')  <!-- ajouter avec le code au dessus -->
         <div class="mt-4 ">
             <p>{!! nl2br($propriete->description) !!}</p>
             <div class="mt-4 flex flex-col gap-3">

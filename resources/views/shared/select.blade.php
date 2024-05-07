@@ -5,7 +5,7 @@
     $label ??= ucfirst($name);
 @endphp
 <div @class(['max-w-md mx-auto', $class])>
-    <label for="{{ $name }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $label }}</label>
+    <label for="{{ $name }}" class="block mb-2 text-sm font-medium text-gray-900">{{ $label }}</label>
     <select name="{{ $name }}[]" id="{{ $name }}" multiple>
     @foreach ($options as $k => $v )
     <option @selected($value->contains($k)) value="{{ $k }}">{{ $v }} </option>   
