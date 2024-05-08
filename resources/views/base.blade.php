@@ -17,10 +17,11 @@
 
 <body class="dark:bg-slate-800 antialiased">
 
-    @include('shared.nav')
+    {{-- @include('shared.nav') --}}
+    {{-- @livewire('navigation-menu') --}}
+    @include('nav-gpt')
 
-        @yield('content')
-  
+    @yield('content')
 
     <script>
         document.getElementById('nav-toggle').onclick = function() {
