@@ -14,6 +14,8 @@ $slugRegex = '[0-9a-z\-]+';
 // Route::get('/registerr', Registerr::class)->name('registerr')->middleware('guest');
 
 Route::get('/', [HomeController::class, 'index'])->name('accueil');
+// Route::get('/guest', [HomeController::class, 'index'])->name('guest');
+// Route::get('/app', [HomeController::class, 'index'])->name('app');
 Route::get('/biens', [ControllersProprieteController::class, 'index'])->name('propriete.index');
 Route::get('/biens/{slug}-{propriete}', [ControllersProprieteController::class, 'show'])->name('propriete.show')->where([
     'propriete' => $idRegex,

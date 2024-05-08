@@ -5,10 +5,14 @@
 @section('content')
     <div class='flex justify-between items-center'>
         <h1 class="font-bold text-purple-600 text-5xl ">@yield('title')</h1>
-        <a href="{{ route('admin.propriete.create') }}" type="button"
-            class="flex justify-end text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+        <div class="flex mt-5"> <a href="{{ route('admin.propriete.create') }}" type="button"
+            class="flex justify text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             Ajouter un bien</a>
-    </div>
+         <a href="{{ route('admin.option.create') }}" type="button"
+            class="flex justify text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Créer une option</a>
+    </div></div>
+       
 
     <table class="w-full text-m text-left rtl:text-right text-gray-500">
         <thead>

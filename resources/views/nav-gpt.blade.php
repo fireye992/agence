@@ -33,11 +33,11 @@
                             {{ __('Adm-Proprietes') }}
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link href="{{ route('admin.option.create') }}" :active="request()->routeIs('admin.option.create')">
                             {{ __('Adm-Options') }}
                         </x-nav-link>
-                    </div>
+                    </div> --}}
                 @endauth
 
             </div>
