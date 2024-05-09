@@ -13,9 +13,9 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
 
     <title>@yield('title') | Administration</title>
- 
+
     @livewireStyles
-</head> 
+</head>
 
 <body class="dark:bg-gray-800 antialiased">
 

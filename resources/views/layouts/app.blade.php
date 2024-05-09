@@ -21,8 +21,8 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
-            {{-- @livewire('navigation-menu') --}}
-            @livewire('nav-gpt')
+            @livewire('navigation-menu')
+            {{-- @include('nav-gpt') --}}
 
             <!-- Page Heading -->
             @if (isset($header))
