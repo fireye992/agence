@@ -11,9 +11,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
 
-    @livewireStyles
-
     <title>@yield('title') | Agence Momoboliere</title>
+    
+    @livewireStyles
 </head>
 
 <body class="dark:bg-slate-800 antialiased">

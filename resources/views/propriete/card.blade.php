@@ -19,7 +19,6 @@
                 <span>&gt;</span>
             </button>
         </div>
-        
     
         <p class="mb-0 text-slate-800">{{ $propriete->surface }} m² - {{ $propriete->code_postal }}
             {{ $propriete->ville }}</p>

@@ -12,9 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
 
-
     <title>@yield('title') | Administration</title>
  
+    @livewireStyles
 </head> 
 
 <body class="dark:bg-gray-800 antialiased">
@@ -44,6 +44,7 @@
             }
         })
     </script>
+    @livewireScripts
 </body>
 
 </html>
