@@ -97,5 +97,10 @@ class Propriete extends Model
     {
         return $builder->orderBy('created_at', 'desc');
     }
+
+    public function getProprietaireNameAttribute()
+{
+    return $this->proprietaire->name ?? 'Non spécifié';
+}
         
 }

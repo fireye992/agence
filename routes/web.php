@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\Route;
 $idRegex = '[0-9]+';
 $slugRegex = '[0-9a-z\-]+';
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/registerr', Registerr::class)->name('registerr');
+// Route::get('/registerr', Registerr::class)->name('registerr')->middleware('guest');
+
+Route::get('/', [HomeController::class, 'index'])->name('accueil');
+// Route::get('/guest', [HomeController::class, 'index'])->name('guest');
+// Route::get('/app', [HomeController::class, 'index'])->name('app');
 Route::get('/biens', [ControllersProprieteController::class, 'index'])->name('propriete.index');
 Route::get('/biens/{slug}-{propriete}', [ControllersProprieteController::class, 'show'])->name('propriete.show')->where([
     'propriete' => $idRegex,
@@ -24,6 +29,15 @@ Route::post('/biens/{propriete}/contact', [ControllersProprieteController::class
 Route::get('/login', [AuthController::class, 'login'])
     ->middleware('guest')
     ->name('login');
+    
+    Route::get('/register', function () {
+        return view('auth.register');
+    })->middleware('guest')->name('register');
+
+    Route::post('/register', [AuthController::class, 'register'])
+    ->middleware('guest')
+    ->name('register.submit');
+
 Route::post('/login', [AuthController::class, 'dologin']);
 Route::delete('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
@@ -34,4 +48,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('option', OptionController::class)->except(['show']);
 
     Route::post('propriete/{id}/restore', [ProprieteController::class, 'restore'])->name('propriete.restore')->where('id', '[0-9]+');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
