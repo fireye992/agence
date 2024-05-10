@@ -1,11 +1,15 @@
-@extends('base')
-
-@section('content')
+@section('title','Bienvenue')
+<x-adm-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+             @yield('title')
+        </h2>
+    </x-slot>
 
 <div class="class">
-    <div class="container mx-auto sm:px-4 text-white">
-        <h1 class="text-2xl mt-4">Agence Ouin Ouin</h1>
-        <p class='m-4'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos eveniet quae aliquam quasi ipsum consectetur ea possimus perspiciatis! Consequatur, nostrum et! Doloribus autem, perferendis exercitationem quia magni at tempora eos!</p>
+    <div class="container mx-auto sm:px-4 text-slate-800">
+        <h1 class="text-2xl m-4">Agence Mébouls</h1>
+        <p class='m-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos eveniet quae aliquam quasi ipsum consectetur ea possimus perspiciatis! Consequatur, nostrum et! Doloribus autem, perferendis exercitationem quia magni at tempora eos!</p>
     </div>
 </div>
 
@@ -19,20 +23,4 @@
         @endforeach
     </div>
 </div>
-@endsection
-
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
+</x-adm-layout>
