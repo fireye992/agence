@@ -1,5 +1,5 @@
 @section('title','Consultez nos biens')
-<x-adm-layout>
+<x-visit-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
              @yield('title')
@@ -44,4 +44,4 @@
        {{ $proprietes->links() }}
    </div>
 </div>
-</x-adm-layout>
+</x-visit-layout>

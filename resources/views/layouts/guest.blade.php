@@ -21,7 +21,7 @@
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
-MA BITE
         @livewireScripts
     </body>
 </html>
+{{-- IMPORTANT POUR LOGIN --}}

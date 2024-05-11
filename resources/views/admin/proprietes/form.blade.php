@@ -1,8 +1,15 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin') --}}
+@section('title', $propriete->exists ? 'Editer un bien' : 'Ajouter un bien')
 
-@section('title', $propriete->exists ? 'Editer un bien' : 'Créer un bien')
+<x-adm-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @yield('title')
+        </h2>
+    </x-slot>
 
-@section('content')
+
+    {{-- @section('content') --}}
 
     <h1 class="text-3xl text-gray-100">@yield('title')</h1>
 
@@ -87,31 +94,32 @@
             'multiple' => true,
         ])
         @include('shared.checkbox', [
-            'class' => 'text-slate-200',
+            'class' => 'text-slate-700',
             'name' => 'vendu',
             'label' => 'Vendu',
             'value' => $propriete->vendu,
             'options' => $options,
         ])
-        <div>
+        <div class="p-4">
             <div>
                 @foreach ($propriete->pictures as $picture)
-    <div>
-        <img src="{{ Storage::url($picture->filename) }}" alt="Image" style="width: 100px; height: auto;">
-        <input type="checkbox" name="delete_pictures[]" value="{{ $picture->id }}"> Supprimer
-    </div>
-@endforeach
+                    <div>
+                        <img src="{{ Storage::url($picture->filename) }}" alt="Image"
+                            style="width: 100px; height: auto;">
+                        <input type="checkbox" name="delete_pictures[]" value="{{ $picture->id }}"> Supprimer
+                    </div>
+                @endforeach
                 <input type="file" name="pictures[]" multiple>
             </div>
             <button type="submit"
-                class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                @if ($propriete->exists)
+            class="mt-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            @if ($propriete->exists)
                     Modifier
                 @else
-                    Créer
+                    Ajouter
                 @endif
             </button>
         </div>
     </form>
-
-@endsection
+</x-adm-layout>
+{{-- @endsection --}}

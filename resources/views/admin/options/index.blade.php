@@ -1,15 +1,10 @@
-@extends('admin.admin')
-
 @section('title', 'Toutes les options')
-
-@section('content')
-
-    <div class='flex justify-between items-center'>
-        <h1 class="font-bold text-purple-600 text-5xl ">@yield('title')</h1>
-        <a href="{{ route('admin.option.create') }}" type="button"
-            class="flex justify-end text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-            Ajouter une option</a>
-    </div>
+<x-adm-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @yield('title')
+        </h2>
+    </x-slot>
 
     <table class="w-full text-m text-left rtl:text-right text-gray-500">
         <thead>
@@ -29,7 +24,7 @@
                                 @csrf
                                 @method('delete')
                                 <button type="submit"
-                                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Supprimer</button>
+                                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 shadow-lg shadow-red-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Supprimer</button>
                             </form>
                         </div>
                     </td>
@@ -37,6 +32,18 @@
             @endforeach
         </tbody>
     </table>
+    <div class='flex justify-center'>
+        <div class='w-full max-w-4xl px-4'>
+            <div class="flex justify-center space-x-4 mt-3">
+
+                <a href="{{ route('admin.option.create') }}" type="button"
+                    class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    Ajouter une option
+                </a>
+            </div>
+        </div>
+    </div>
 
     {{ $options->links() }}
-@endsection
+    {{-- @endsection --}}
+</x-adm-layout>

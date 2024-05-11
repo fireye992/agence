@@ -1,5 +1,5 @@
 @section('title','Bienvenue')
-<x-adm-layout>
+<x-visit-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
              @yield('title')
@@ -23,4 +23,4 @@
         @endforeach
     </div>
 </div>
-</x-adm-layout>
+</x-visit-layout>

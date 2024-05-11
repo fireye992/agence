@@ -1,11 +1,11 @@
 <div class="mt-4">
-    <h4 class="mb-4">Contactez nous</h4>
+    <h4 class="font-semibold text-2xl">Intéressé par ce bien ?</h4>
 
     @include('shared.flash')
 
-    <form action="{{ route('propriete.contact', $propriete) }}" method="post" class="flex flex-col gap-3">
+    <form action="{{ route('propriete.contact', $propriete) }}" method="post" class="flex flex-col gap-3 p-3">
         @csrf
-        <div class="w-1/3 p-2 bg-gray-800 border rounded border-gray-600">
+        <div class="w-1/3 p-2 border rounded border-slate-600">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Nom',
@@ -19,7 +19,7 @@
                 'value' => 'Prenomnom',
             ])
         </div>
-        <div class="w-1/3 p-2 bg-gray-800 border rounded border-gray-600">
+        <div class="w-1/3 p-2 border rounded border-slate-600">
             @include('shared.input', [
                 'class' => 'flex',
                 'label' => 'Téléphone',
@@ -34,7 +34,7 @@
                 'value' => 'email@email.com',
             ])
         </div>
-        <div class="w-1/3 p-2 bg-gray-800 border rounded border-gray-600">
+        <div class="w-1/3 p-2 border rounded border-slate-600">
             @include('shared.input', [
                 'type' => 'textarea',
                 'class' => 'flex',
@@ -44,7 +44,7 @@
             ])
         </div>
         <div>
-            <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+            <button type="submit" class="bg-slate-500 hover:bg-slate-400 shadow-lg shadow-slate-500/50 text-white font-bold py-2 px-4 rounded">
                 Prise de contact
             </button>
         </div>

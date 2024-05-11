@@ -6,11 +6,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class Registerr extends Component
+class Registerrr extends Component
 {
     public function render()
     {
-        return view('livewire.auth.registerr')->layout('layouts.app');
+        return view('livewire.auth.registerrr')->layout('layouts.adm');
     }
 
     public function register()

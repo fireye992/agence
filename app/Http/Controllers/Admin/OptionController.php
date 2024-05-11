@@ -37,7 +37,7 @@ class OptionController extends Controller
         $option = Option::create($request->validated());
         return to_route('admin.option.index')->with('success', 'C\'est créé');
     }
-
+    // CETTE MERDE DE OPTION SANS S c'est comme ca pour l'instant cherche pas
     /**
      * Display the specified resource.
      */

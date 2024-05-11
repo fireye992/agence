@@ -1,8 +1,5 @@
-@extends('admin.admin')
-
 @section('title', $option->exists ? 'Editer une bien' : 'Créer une option')
-
-@section('content')
+<x-adm-layout>
 
     <h1 class="text-3xl text-gray-100">@yield('title')</h1>
 
@@ -26,4 +23,4 @@
             </button>
         </div>
     </form>
-    @endsection
+</x-adm-layout>
