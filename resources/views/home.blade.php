@@ -18,7 +18,7 @@
     <div class="flex flex-wrap p-2">
         @foreach($proprietes as $propriete)
         <div class="relative flex-grow max-w-full flex-1 px-4">
-            @include('propriete.card')
+            @livewire('propriete.card', ['propriete' => $propriete])
         </div>
         @endforeach
     </div>

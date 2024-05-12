@@ -55,6 +55,16 @@
         }
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
+            html.classList.add(currentTheme);
+            window.theme = currentTheme;
+        });
+    </script>
+
+
     @livewireScripts
 </body>
 
